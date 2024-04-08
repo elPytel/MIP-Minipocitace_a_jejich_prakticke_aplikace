@@ -9,6 +9,9 @@
 ## Cvičení
 - [[TUL-navazující_studium/2. semestr/MIP-Minipocitace_a_jejich_prakticke_aplikace/cviceni/cv01|cv01]]
 - [[TUL-navazující_studium/2. semestr/MIP-Minipocitace_a_jejich_prakticke_aplikace/cviceni/cv02|cv02]]
+- [[TUL-navazující_studium/2. semestr/MIP-Minipocitace_a_jejich_prakticke_aplikace/cviceni/cv03|cv03]]
+- [[TUL-navazující_studium/2. semestr/MIP-Minipocitace_a_jejich_prakticke_aplikace/cviceni/cv04|cv04]]
+- [[TUL-navazující_studium/2. semestr/MIP-Minipocitace_a_jejich_prakticke_aplikace/cviceni/cv05|cv05]]
 
 ## Sestavujeme Embedded
 
@@ -19,7 +22,7 @@
 >1. Toolchain
 >2. [[u-Boot|Bootloader]]
 >3. [[Kernel - kompilace|Kernel]]
->4. rootfs
+>4. [[rootfs|rootfs]]
 
 ```mermaid
 graph LR;
@@ -58,10 +61,10 @@ binutils
 - linker
 - assembler
 
-systémová knihovna
-- glibc (POSIX API, je dost velká, [[Lincence#GPL-2.0|GPL-2]])
-- uclibc (horší POSIX kompatibilita)
-- musl-libc 
+Systémová knihovna:
+- glibc (POSIX API, je dost velká, [[Licence#GPL-2.0|GPL-2]])
+- uclibc (horší POSIX kompatibilita, malá, [[Licence#BSD a MIT|MIT]])
+- musl-libc (lepší POSIX kompatibilita, relativně malá, [[Licence#BSD a MIT|MIT]])
 
 ## Nástroje pro sestavování
 - Kconfig/Makefile
@@ -72,6 +75,16 @@ systémová knihovna
 	- bitbake 
 		- paralelní sestavování dle závislosti receptů
 		- recepty - python shell
-- YocTo
+- [[Yocto|YocTo]]
 	- využívá Layers (receptů bitbake)
 	- PoKy
+
+### buildroot
+```mermaid
+graph LR;
+	Zavdec_u-boot-->kernel+moduly;
+	kernel+moduly-->dts(dtb);
+	dts(dtb)-->rootfs;
+```
+
+## Další
